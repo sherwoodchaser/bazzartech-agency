@@ -1,53 +1,87 @@
+"use client";
 import React from "react";
-import { Button } from "./ui/button";
-import MagnetLines from "./MagnetLines/MagnetLines";
-import { FlipWords } from "./ui/flip-words";
+import { motion } from "framer-motion";
+import RotatingText from "./RotatingText/RotatingText";
+import { servicesWords } from "@/constants";
+import HeroVideoDialog from "./magicui/hero-video-dialog";
+
+const container = {
+  hidden: { opacity: 0, y: 40 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      staggerChildren: 0.2,
+      duration: 0.8,
+      delayChildren: 0.6,
+      ease: [0.25, 1, 0.5, 1],
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 40 },
+  show: { opacity: 1, y: 0 },
+};
 
 function Intro() {
-  const words = ["websites", "social media", "e-commerce store", "portfolio"];
   return (
-    <section className="w-full h-full flex justify-center items-center">
-      <div className="flex flex-col md:flex-row items-center  gap-5">
-        {/* Left content */}
-        <div className="space-y-6 flex-2">
-          <h1 className="text-4xl md:text-7xl font-bold leading-tight text-white">
-            we can help you build <br />
-            <p className="">
-              <FlipWords words={words} className="text-purple-500" />
-            </p>
-          </h1>
-          <p className="text-lg md:text-xl text-white/70">
-            Bazzartech helps businesses dominate social media and boost ROI
-            through data-driven advertising, creative storytelling, and viral
-            growth strategies.
-          </p>
-          <div className="flex gap-4">
-            <Button
-              size="lg"
-              className="bg-purple-700 text-white hover:bg-purple-800"
-            >
-              Get Started
-            </Button>
-            <Button variant="link" size="lg" className="text-white">
-              Learn More
-            </Button>
-          </div>
-        </div>
+    <motion.div
+      variants={container}
+      initial="hidden"
+      animate="show"
+      className="text-center max-w-5xl mx-auto px-4 space-y-6"
+    >
+      <motion.h1
+        variants={item}
+        className="text-4xl md:text-6xl font-bold leading-tight text-white flex flex-col gap-5 items-center"
+      >
+        <span className="flex items-center justify-center gap-4">
+          <span>Créez votre</span>
+          <RotatingText
+            texts={servicesWords}
+            mainClassName="text-white bg-purple-600 w-[500px] rounded-full flex items-center justify-center px-4 py-1"
+            staggerFrom="last"
+            initial={{ y: "100%" }}
+            animate={{ y: 0 }}
+            exit={{ y: "-120%" }}
+            staggerDuration={0.025}
+            splitLevelClassName="overflow-hidden"
+            transition={{ type: "spring", damping: 30, stiffness: 400 }}
+            rotationInterval={2000}
+          />
+        </span>
+        <span>Avec BazzarTech 🚀</span>
+      </motion.h1>
 
-        {/* Right side spacer (to balance layout) */}
-        <div className="hidden md:flex">
-          <MagnetLines
-            rows={9}
-            columns={9}
-            containerSize="60vmin"
-            lineColor="purple"
-            lineWidth="0.8vmin"
-            lineHeight="5vmin"
-            baseAngle={0}
+      <motion.p variants={item} className="text-white/70 text-base md:text-lg">
+        Chez BazzarTech, nous aidons les entreprises à se démarquer sur le web —
+        création de sites modernes, gestion de réseaux sociaux et production de
+        vidéos engageantes. Confiez-nous le digital, concentrez-vous sur votre
+        croissance.
+      </motion.p>
+
+      <motion.div
+        variants={item}
+        className="mt-20 flex justify-center items-center flex-col"
+      >
+        <p className="text-white/80 text-lg mb-4 flex items-center gap-5">
+          Découvrez ce que BazzarTech peut faire pour vous{" "}
+          <span className="animate-bounce text-2xl bg-purple-600 w-[40px] h-[40px] rounded-full flex items-center justify-center">
+            ↓
+          </span>
+        </p>
+        <div className="w-[90vw] max-w-4xl aspect-video rounded-2xl border-8 border-purple-700 overflow-hidden">
+          <HeroVideoDialog
+            className="block dark:hidden border-none outline-none"
+            animationStyle="from-center"
+            videoSrc="https://www.youtube.com/embed/F4yb0CBd4I4?si=QsIr5Ls-oEehuxSL"
+            thumbnailSrc="https://img.youtube.com/vi/F4yb0CBd4I4/maxresdefault.jpg"
+            thumbnailAlt="Dummy Video Thumbnail"
           />
         </div>
-      </div>
-    </section>
+      </motion.div>
+    </motion.div>
   );
 }
 
