@@ -1,6 +1,6 @@
 export const items = [
   { label: "Accueil", href: "#" },
-  { label: "À propos", href: "#" },
+  { label: "À propos", href: "#about" },
   { label: "Nos Services", href: "#" },
   { label: "Portfolio", href: "#" },
   { label: "Contact", href: "#" },
@@ -11,4 +11,6 @@ export const servicesWords = [
   "e-commerce",
   "réseaux sociaux",
   "Vidéo marketing",
+  "Photos produits",
+  "contenu",
 ];
