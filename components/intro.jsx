@@ -30,17 +30,17 @@ function Intro() {
       variants={container}
       initial="hidden"
       animate="show"
-      className="text-center max-w-5xl mx-auto px-4 space-y-6"
+      className="text-center md:max-w-5xl md:mx-auto px-10 md:px-4 space-y-3 md:space-y-6"
     >
       <motion.h1
         variants={item}
-        className="text-4xl md:text-6xl font-bold leading-tight text-white flex flex-col gap-5 items-center"
+        className="text-3xl md:text-6xl font-bold leading-tight text-white flex flex-col gap-5 items-center"
       >
-        <span className="flex items-center justify-center gap-4">
+        <span className="flex items-center justify-center flex-col md:flex-row gap-4">
           <span>Créez votre</span>
           <RotatingText
             texts={servicesWords}
-            mainClassName="text-white bg-purple-600 w-[500px] rounded-full flex items-center justify-center px-4 py-1"
+            mainClassName="text-white bg-purple-600 w-[70dvw] md:w-[500px] rounded-full flex items-center justify-center px-4 py-1"
             staggerFrom="last"
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
@@ -54,7 +54,7 @@ function Intro() {
         <span>Avec BazzarTech 🚀</span>
       </motion.h1>
 
-      <motion.p variants={item} className="text-white/70 text-base md:text-lg">
+      <motion.p variants={item} className="text-white/70 text-md md:text-lg">
         Chez BazzarTech, nous aidons les entreprises à se démarquer sur le web —
         création de sites modernes, gestion de réseaux sociaux et production de
         vidéos engageantes. Confiez-nous le digital, concentrez-vous sur votre
@@ -65,7 +65,7 @@ function Intro() {
         variants={item}
         className="mt-20 flex justify-center items-center flex-col"
       >
-        <p className="text-white/80 text-lg mb-4 flex items-center gap-5">
+        <p className="text-white/80 text-md md:text-lg mb-4 flex items-center flex-col md:flex-row gap-5">
           Découvrez ce que BazzarTech peut faire pour vous{" "}
           <span className="animate-bounce text-2xl bg-purple-600 w-[40px] h-[40px] rounded-full flex items-center justify-center">
             ↓
